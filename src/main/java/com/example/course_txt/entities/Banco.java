@@ -1,22 +1,33 @@
 package com.example.course_txt.entities;
 
-public class Banco {
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "tb_banco")
+public class Banco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private Long conta;
-    private Long agencia;
+
     private Long cpf;
+
+    private String nome;
+    private String dataNascimento;
+    private String agencia;
+    private Long conta;
+
+
 
     public Banco() {
     }
 
-    public Banco(Long id, String nome, Long conta, Long agencia, Long cpf) {
+    public Banco(Long id, Long cpf, String nome, String dataNascimento, String agencia, Long conta) {
         this.id = id;
-        this.nome = nome;
-        this.conta = conta;
-        this.agencia = agencia;
         this.cpf = cpf;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.agencia = agencia;
+        this.conta = conta;
     }
 
     public Long getId() {
@@ -27,6 +38,14 @@ public class Banco {
         this.id = id;
     }
 
+    public Long getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(Long cpf) {
+        this.cpf = cpf;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -35,27 +54,27 @@ public class Banco {
         this.nome = nome;
     }
 
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(String agencia) {
+        this.agencia = agencia;
+    }
+
     public Long getConta() {
         return conta;
     }
 
     public void setConta(Long conta) {
         this.conta = conta;
-    }
-
-    public Long getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(Long agencia) {
-        this.agencia = agencia;
-    }
-
-    public Long getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(Long cpf) {
-        this.cpf = cpf;
     }
 }
