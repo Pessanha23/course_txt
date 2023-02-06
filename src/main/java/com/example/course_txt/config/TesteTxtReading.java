@@ -5,20 +5,18 @@ import com.example.course_txt.repositories.BancoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
 
 @Configuration
-public class TesteTxt implements CommandLineRunner{
+public class TesteTxtReading implements CommandLineRunner{
 
     @Autowired
     private BancoRepository bancoRepository;
-
+    //Metodo para Ler um txt e guardar as informações ocnfome a lógica no banco de dados;
     @Override
     public void run(String... args) throws Exception {
         File file = new File("C:\\Users\\joaor\\OneDrive\\Documents\\Curso de programação\\Curso de Java\\" +
