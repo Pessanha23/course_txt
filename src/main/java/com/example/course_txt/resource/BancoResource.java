@@ -23,8 +23,8 @@ public class BancoResource {
     private BancoRepository bancoRepository;
 
     @PostMapping
-    public ResponseEntity txtWritingResponseEntity() throws Exception {
-        testeTxtWriting.Banco(String.valueOf(bancoRepository));
+    public ResponseEntity txtWritingResponseEntity(){
+        testeTxtWriting.banco();
         return ResponseEntity.ok().build();
     }
 }

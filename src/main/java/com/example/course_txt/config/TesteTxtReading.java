@@ -12,10 +12,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 @Configuration
-public class TesteTxtReading implements CommandLineRunner{
+public class TesteTxtReading implements CommandLineRunner {
 
     @Autowired
     private BancoRepository bancoRepository;
+
     //Metodo para Ler um txt e guardar as informações ocnfome a lógica no banco de dados;
     @Override
     public void run(String... args) throws Exception {
@@ -29,7 +30,7 @@ public class TesteTxtReading implements CommandLineRunner{
 
                 System.out.println(line);
                 Long bancoId = null;
-                Long bancoCpf = Long.valueOf(line.substring(0, 11));
+                String bancoCpf = (line.substring(0, 11));
                 banco.setCpf(bancoCpf);
 
                 String nome = line.substring(11, 60);
@@ -42,16 +43,14 @@ public class TesteTxtReading implements CommandLineRunner{
                 String bancoAgencia = line.substring(69, 74);
                 banco.setAgencia(bancoAgencia);
 
-                Long bancoConta = Long.valueOf(line.substring(74, 82));
+                String bancoConta = (line.substring(74, 82));
                 banco.setConta(bancoConta);
 
                 bancoRepository.save(banco);
-
                 line = br.readLine();
             }
         } catch (IOException e) {
             System.out.println("ERROR" + e.getMessage());
         }
-
     }
 }
