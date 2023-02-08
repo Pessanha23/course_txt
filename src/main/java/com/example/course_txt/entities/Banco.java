@@ -9,19 +9,19 @@ public class Banco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String cpf;
+    private Long cpf;
 
     private String nome;
     private String dataNascimento;
     private String agencia;
-    private String conta;
+    private Long conta;
 
 
 
     public Banco() {
     }
 
-    public Banco(Long id, String cpf, String nome, String dataNascimento, String agencia, String conta) {
+    public Banco(Long id, Long cpf, String nome, String dataNascimento, String agencia, Long conta) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
@@ -38,11 +38,11 @@ public class Banco {
         this.id = id;
     }
 
-    public String getCpf() {
+    public Long getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
 
@@ -70,11 +70,11 @@ public class Banco {
         this.agencia = agencia;
     }
 
-    public String getConta() {
+    public Long getConta() {
         return conta;
     }
 
-    public void setConta(String conta) {
+    public void setConta(Long conta) {
         this.conta = conta;
     }
 }
