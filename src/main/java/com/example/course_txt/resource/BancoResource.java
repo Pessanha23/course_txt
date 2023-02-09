@@ -19,9 +19,6 @@ public class BancoResource {
     @Autowired
     public TesteTxtWriting testeTxtWriting;
 
-    @Autowired
-    private BancoRepository bancoRepository;
-
     @PostMapping
     public ResponseEntity txtWritingResponseEntity(){
         testeTxtWriting.banco();

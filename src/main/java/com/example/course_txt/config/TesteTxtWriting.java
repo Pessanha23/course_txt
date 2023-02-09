@@ -21,24 +21,25 @@ public class TesteTxtWriting {
                 "2 - Curso Udemy Java 2\\17 - Trabalho de arquivo\\scratch_out.txt");
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
-            String cpfTamanho = "00000000000";
-            String contaTamanho = "00000000";
             for (Banco banco : bancoList) {
-                String cpfBanco = String.valueOf(banco.getCpf());
-                for (int i = cpfBanco.length(); i < cpfTamanho.length(); i++) {
-                    cpfBanco = "0".concat(cpfBanco);
+                int cpfTamanho = 11;
+                int contaTamanho = 8;
+                String zero = "0";
+                StringBuilder cpfBanco = new StringBuilder(String.valueOf(banco.getCpf()));
+                StringBuilder conta = new StringBuilder(String.valueOf((banco.getConta())));
+
+                for (int i = cpfBanco.length(); i < cpfTamanho; i++) {
+                    cpfBanco.insert(0, zero);
                 }
 
-                String conta = String.valueOf(banco.getConta());
-                for (int i = conta.length(); i < contaTamanho.length(); i++) {
-                    conta = "0".concat(conta);
+                for (int i = conta.length(); i < contaTamanho; i++) {
+                    conta.insert(0, zero);
                 }
 
-                bw.write(cpfBanco);
-                bw.write(String.format("%-50s",banco.getNome()));
-                bw.write(banco.getDataNascimento());
-                bw.write(banco.getAgencia());
-                bw.write(conta);
+                String dadosFinais = cpfBanco + (String.format("%-50s", banco.getNome())) +
+                        (banco.getDataNascimento()) + (banco.getAgencia()) + conta;
+
+                bw.write(dadosFinais);
                 bw.newLine();
             }
         } catch (IOException e) {
@@ -46,6 +47,8 @@ public class TesteTxtWriting {
         }
     }
 }
+
+
 /*
 54424044033MATHEUS MARQUES                                   310819900001X 12300678
 23727393017JOAO DA SILVA SOUZA                               0201196500324 00000001
@@ -56,8 +59,9 @@ public class TesteTxtWriting {
 _4234304085ANA MARIA BEZERRA DA SILVA SOUZA BENTO 16         1405197215000____4326
 
 54424044033MATHEUS MARQUES                                   310819900001X12300678
-23727393017JOAO DA SILVA SOUZA                               020119650032400000001
-04234304085ANA MARIA BEZERRA DA SILVA SOUZA BENTO 16         140519721500000004326
+23727393017JOAO DA SILVA SOUZA                               020119650032410000000
+42343040850ANA MARIA BEZERRA DA SILVA SOUZA BENTO 16         140519721500043260000
+
 
 
  */
